@@ -1,0 +1,5 @@
+Para este trabalho (T01), realizar uma pesquisa relacionado aos modelos de BD: Hierarquico, Rede e Relacional.
+
+Considere as formas de representação dos dados, vantagens e desvantagens.
+
+Escreva no maximo 5 páginas, formato artigo.

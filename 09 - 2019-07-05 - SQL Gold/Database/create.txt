@@ -1,0 +1,46 @@
+create table construtora
+(cod_const char(10) not null,
+cgc char(20) unique not null,
+nome_const char(30) not null,
+primary key (cod_const));
+
+create table engenheiro
+(crea char(8) not null,
+cpf char(11) unique not null,
+nome_eng char(30) not null,
+area_atuacao char(20) not null,
+primary key (crea));
+
+create table obra
+(cod_obra integer not null,
+nome_obra char(30) not null,
+localizacao char(50) not null,
+tipo char(15) not null,
+cod_const char(10) not null,
+cod_eng_resp char(8) not null,
+primary key (cod_obra),
+foreign key (cod_const) references construtora,
+foreign key (cod_eng_resp) references engenheiro);
+
+create table operario
+(cart_trab char(15) not null,
+nomeop char(30) not null,
+endereco char(50) not null,
+telefone char(20),
+primary key (cart_trab));
+
+create table obra_operario
+(cod_obra integer not null,
+cart_trab char(15) not null,
+data date not null,
+atividades char(200),
+primary key (cod_obra, cart_trab, data),
+foreign key (cod_obra) references obra,
+constraint fk_obra_op foreign key (cart_trab) references operario);
+
+create table operario_construtora
+(cart_trab char(15) not null,
+cod_const char(10) not null,
+primary key (cart_trab, cod_const),
+constraint fk_opconst foreign key (cart_trab) references operario,
+foreign key (cod_const) references construtora);
